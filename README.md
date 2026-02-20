@@ -340,6 +340,7 @@ Display update
 
 Fab-floor decision trigger
 
+
 | PEs | Total Latency (cycles) | Speedup | Latency (ms) |
 | --- | ---------------------- | ------- | ------------ |
 | 1   | 11,48,90,005           | 1×      | 1148.9       |
@@ -349,14 +350,22 @@ Fab-floor decision trigger
 | 64  | 4,94,909               | 232.12× | 4.95         |
 | 128 | 3,92,314               | 292.79× | 3.92         |
 
+
 ## Hardware Implementation 
+
 <img width="1048" height="694" alt="image" src="https://github.com/user-attachments/assets/8febbe3b-8732-43cd-92da-6223a9948f70" />
+
 Fig. a : The left-side image serves as the input image displayed to camera, which captures the visual data for processing. The processing board and camera module are positioned to enable real-time image acquisition for ML inference.
+
 Fig. b : The right-top panel shows the image captured by the camera.
+
 Fig. c : The right-bottom panel illustrates the output prediction produced by the ML accelerator.
 
+
 <img width="1197" height="188" alt="image" src="https://github.com/user-attachments/assets/4ff1b3fc-96d3-4d4d-bec6-7a152a50b7b6" />
+
 <img width="1208" height="204" alt="image" src="https://github.com/user-attachments/assets/89f3dfbe-8343-44d6-aab4-3fd7f7e8637b" />
+
 
 | SR. NO. | METRIC                   | VALUE           |
 | ------- | ------------------------ | --------------- |
@@ -370,6 +379,7 @@ Fig. c : The right-bottom panel illustrates the output prediction produced by th
 | 8       | BRAM : DSP               | 75 : 87         |
 | 9       | ON CHIP POWER            | 0.147 Watt      |
 | 10      | ENERGY PER FRAME         | 368 µJ/frame    |
+
 
 ## Conclusion
 
