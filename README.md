@@ -40,62 +40,42 @@ The accelerator architecture incorporates parallel MAC arrays, pipelined datapat
 Compared to traditional machine learning approaches such as Support Vector Machines and Random Forests—which rely on handcrafted features and limited scalability—the proposed CNN-based accelerator enables automated feature extraction with improved classification robustness. Additionally, unlike computationally intensive architectures such as ResNet or Vision Transformers, MobileNetV2 provides a favorable trade-off between accuracy and computational complexity, making it practical for real-time deployment on heterogeneous embedded SoCs.
 
 📑 Functional Specifications and Methodology
+
 1️⃣ Input
-
 High-resolution wafer images acquired from inspection equipment.
-
 Images are preprocessed and quantized to INT8 format to match the fixed-point FPGA accelerator architecture.
 
 2️⃣ Model Architecture
-
 MobileNetV2 CNN quantized to INT8 using Quantization-Aware Training (QAT) to reduce computational and memory overhead while maintaining accuracy.
-
 Supported layers include Standard Convolution (SC), Depthwise Convolution (DW), and Pointwise Convolution (PW), along with Batch Normalization, ReLU, Max Pooling, and Fully Connected layers.
-
 Convolution and pooling operations are mapped onto parallel MAC/MAX-based Processing Elements (PEs) implemented in the programmable logic.
 
 3️⃣ Output
-
 Predicted wafer defect class is transmitted to the Arm Cortex-A Processing System (PS) via AXI interface for further decision-making and system-level control.
 
 4️⃣ Performance Metrics
-
 Accuracy: INT8 quantized model achieves ~95.5% classification accuracy compared to ~97.8% FP32 baseline.
-
 Latency: ~3.92 ms per image using fully pipelined hardware execution.
-
 Throughput: ~255 images per second, enabling real-time inspection.
-
 Energy Efficiency: Reduced power consumption through fixed-point arithmetic and pipeline-based architecture.
 
 5️⃣ Memory Architecture
-
 On-chip BRAM buffers store feature maps, weights, biases, scales, and shifts for each CNN layer. Data movement (inputs, intermediate activations, outputs) is managed through AXI4 interfaces with burst transfer support.
-
 DDR memory can be used for storing larger model parameters and input datasets when required.
 
 6️⃣ Interfaces and Integration
-
 AXI4-Lite for control and configuration (start/stop, status, layer parameters).
-
 AXI4/AXI-DMA for high-speed data transfer between PS and PL.
-
 Fully memory-mapped accelerator tightly coupled with the Arm processor within the Zynq SoC environment.
 
 7️⃣ Quantization and Pipeline Optimization
-
 MobileNetV2 converted from FP32 to INT8 using QAT, reducing computational complexity by ~75% while preserving accuracy.
-
 Intra-layer and inter-layer pipelining maximize PE utilization and minimize inference latency.
 
 8️⃣ Tools and Methodology
-
 Design & Synthesis: Xilinx Vivado for RTL synthesis, implementation, and bitstream generation.
-
 Hardware Description: Verilog/SystemVerilog for accelerator design.
-
 Simulation & Verification: Vivado Simulator for functional and timing validation.
-
 Model Training & Quantization: Python with TensorFlow (QAT) for training and INT8 conversion.
 
 <img width="1196" height="1474" alt="image" src="https://github.com/user-attachments/assets/10f9e698-0103-469e-9d43-b65f93c15568" />
